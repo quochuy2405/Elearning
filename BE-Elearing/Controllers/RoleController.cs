@@ -1,27 +1,27 @@
 ﻿using BE_Elearing.Access;
 using BE_Elearing.Models;
 using BE_Elearing.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_Elearing.Controllers
 {
-    [Route("api/courses")]
+    [Route("api/role")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class RoleController : Controller
     {
-        private readonly CourseService _service;
+
+        private readonly RoleService _service;
         private readonly IConfiguration _configuration;
-        public CourseController(IConfiguration configuration, Context context)
+        public RoleController(IConfiguration configuration, Context context)
         {
             _configuration = configuration;
-            _service = new CourseService(configuration, context);
+            _service = new RoleService(configuration, context);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            List<Course> list = _service.GetAll();
+            List<Role> list = _service.GetAll();
             return list.Count == 0 ? BadRequest(new
             {
                 status = "false",

@@ -3,19 +3,19 @@ using BE_Elearing.Models;
 
 namespace BE_Elearing.Services
 {
-    public class CourseService
+    public class ChapterService
     {
         private readonly Context _context;
         private readonly IConfiguration _configuration;
-        public CourseService(IConfiguration configuration, Context context)
+        public ChapterService(IConfiguration configuration, Context context)
         {
             _configuration = configuration;
             _context = context;
 
         }
-        public List<Course> GetAll()
+        public List<Chapter> GetAll()
         {
-            return _context.Courses.ToList();
+            return _context.Chapters.ToList();
         }
     }
 }

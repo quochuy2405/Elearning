@@ -36,6 +36,19 @@ public class MysqlEntityFrameworkDesignTimeServices : IDesignTimeServices
         }
 
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Approval> Approvals { get; set; }
+        public DbSet<Chapter> Chapters { get; set; }
+        public DbSet<CourseMix> CourseMixs { get; set; }
+        public DbSet<ErrorReviewModel> ErrorReviewModels { get; set; }
+        public DbSet<Learning> Learnings { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<MainType> MainTypes { get; set; }
+        public DbSet<User> Users { get; set; }
+    
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var configuration = new ConfigurationBuilder()
@@ -50,12 +63,19 @@ public class MysqlEntityFrameworkDesignTimeServices : IDesignTimeServices
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
         {
-            modelBuilder.Entity<Course>().HasData(new Course
-            {
-                ID = 1,
-                CourseTypeID = 1,
-
-            });
+            modelBuilder.Entity<Approval>().HasKey(m=> m.Id);
+            modelBuilder.Entity<Chapter>().HasKey(m => m.Id);
+            modelBuilder.Entity<Course>().HasKey(m => m.Id);
+            modelBuilder.Entity<CourseMix>().HasKey(m => m.Id);
+            modelBuilder.Entity<ErrorReviewModel>().HasKey(m => m.Id);
+            modelBuilder.Entity<Learning>().HasKey(m => m.Id);
+            modelBuilder.Entity<Lesson>().HasKey(m => m.Id);
+            modelBuilder.Entity<MainType>().HasKey(m => m.Id);
+            modelBuilder.Entity<Payment>().HasKey(m => m.Id);
+            modelBuilder.Entity<Review>().HasKey(m => m.Id);
+            modelBuilder.Entity<Role>().HasKey(m => m.Id);
+            modelBuilder.Entity<Tag>().HasKey(m => m.Id);
+            modelBuilder.Entity<User>().HasKey(m => m.Id);
             base.OnModelCreating(modelBuilder);
         }
     }
